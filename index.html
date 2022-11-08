@@ -1,0 +1,54 @@
+<!Doctype HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="style.css">
+        <title> 1.4 </title>
+    </head>
+    <body>
+        <div>
+            <input type="number">
+            <div>
+                <button id="button-rectangle">Квадрат</button>
+                <button id="button-triangle">Треугольник</button>
+                <button id="button-circle">Круг</button>          
+            </div>
+        </div>
+        
+        <div id="canvas" style="position: relative"> </div>        
+        
+        <script type="module">
+            
+            function randomIntFromInterval(min, max) { 
+                return Math.floor(Math.random() * (max - min + 1) + min)
+            }            
+            function createShape(className) {
+                let count = document.querySelector("input").value;                
+                for (let i = 0; i < count; ++i) {
+                    let ShapeRTC = document.createElement("div");
+                    ShapeRTC.classList = className;
+                    if (className === "triangle") {
+                        ShapeRTC.style.borderLeft = randomIntFromInterval(10, 100) + "px solid transparent";
+                        ShapeRTC.style.borderRight = ShapeRTC.style.borderLeft;
+                        ShapeRTC.addEventListener("click", e => e.target.style.borderBottom = "100px solid yellow");
+                    } else {
+                        ShapeRTC.style.height = randomIntFromInterval(10, 100) + "px";
+                        ShapeRTC.style.width = ShapeRTC.style.height;
+                        ShapeRTC.addEventListener("click", e => e.target.style.background="yellow");
+                    }                   
+                    ShapeRTC.style.top = randomIntFromInterval(50, 500) + "px";
+                    ShapeRTC.style.left = randomIntFromInterval(10, document.documentElement.clientWidth - 200) + "px";
+                    canvas.appendChild(ShapeRTC);                   
+                    ShapeRTC.addEventListener("dblclick", e => e.target.remove())
+                }                    
+            }           
+            let canvas = document.getElementById("canvas");            
+            document.getElementById("button-rectangle").addEventListener("click", e => {
+                createShape("rectangle")})
+            document.getElementById("button-triangle").addEventListener("click", e => {
+                createShape("triangle")})
+            document.getElementById("button-circle").addEventListener("click", e => {
+                createShape("circle")})            
+        </script>
+    </body>
+</html> 
