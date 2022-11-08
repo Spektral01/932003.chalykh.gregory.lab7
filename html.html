@@ -30,11 +30,11 @@
                     if (className === "triangle") {
                         ShapeRTC.style.borderLeft = randomIntFromInterval(10, 100) + "px solid transparent";
                         ShapeRTC.style.borderRight = ShapeRTC.style.borderLeft;
-                        ShapeRTC.addEventListener("click", e => e.target.style.borderBottom = "100px solid yellow");
+                        ShapeRTC.addEventListener("click", e => e.target.style.borderBottom = "100px solid rgba(255, 255, 0, 0.8)");
                     } else {
                         ShapeRTC.style.height = randomIntFromInterval(10, 100) + "px";
                         ShapeRTC.style.width = ShapeRTC.style.height;
-                        ShapeRTC.addEventListener("click", e => e.target.style.background="yellow");
+                        ShapeRTC.addEventListener("click", e => e.target.style.background="rgba(255, 255, 0, 0.8)");
                     }                   
                     ShapeRTC.style.top = randomIntFromInterval(50, 500) + "px";
                     ShapeRTC.style.left = randomIntFromInterval(10, document.documentElement.clientWidth - 200) + "px";
